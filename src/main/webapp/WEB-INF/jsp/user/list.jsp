@@ -44,6 +44,16 @@
                         list_html += tmp;
                     }
                     $("#user_list").html(list_html);
+
+                    var table_html = "<tr><th>" + "ID" + "</th><th>" + "姓名" + "</th></th>" + "年龄" + "</th><th>" + "创建时间" + "</th><th>" + "修改时间" + "</th><th>" + "操作" + "</th></tr>";
+                    console.log(data.list);
+                    for (var i=0;i<data.list.length;i++) {
+                        var user=data.list[i];
+                        console.log(user);
+                        var temp = "<tr><td>" + user.id + "</td><td>" + user.name + "</td><td>" + user.createTime + "</td><td>" + user.updateTime + "</td><td>" + "<a href='javascript:void(0);' onclick='user_update_new("+ user.id +")'>修改</a> <a href='javascript:void(0);' onclick='user_delete("+ user.id +")'>删除</a>" + "</td></tr>"
+                        table_html += temp;
+                    }
+                    $("#user_table").html(table_html);
                 }
             });
         }
@@ -108,7 +118,7 @@
                 pageNumber = 1;
                 document.getElementById("pageNumber").value = 1;
             }
-        }
+        };
         function user_update(userId) {
             var passwd = prompt("请输入新的密码");
             if (passwd) {
@@ -126,6 +136,13 @@
                     }
                 });
             }
+        };
+        function user_update_new(userId) {
+            window.open(base + "/user/userUpdate?id="+userId,"displayWindow","toolbar=no,width=700,height=400,directories=no,status=no,scrollbars=yes,resize=no,menubar=no")
+        };
+        function create_window() {
+            window.open(base + "/user/userUpdate","displayWindow","toolbar=no,width=350,height=400,directories=no,status=no,scrollbars=yes,resize=no,menubar=no")
+        //     window.open("/user/query","displayWindow","toolbar=no,width=350,height=400,directories=no,status=no,scrollbars=yes,resize=no,menubar=no")
         };
         function user_delete(userId) {
             var s = prompt("请输入y确认删除");
@@ -159,6 +176,11 @@
     <button id="font_page">上一页</button>
     <p>---------------------------------------------------------------</p>
     <p id="user_count"></p>
+    <table id="user_table" border="2">
+
+    </table>
+    <p>---------------------------------------------------------------</p>
+
     <div id="user_list">
 
     </div>
@@ -172,6 +194,12 @@
         密码<input name="password">
     </form>
     <button id="user_add_btn">新增</button>
+</div>
+<div>
+    <p>---------------------------------------------------------------</p>
+</div>
+<div>
+    <button id="new_window" onclick="create_window()">打开userUpdate.jsp</button>
 </div>
 </body>
 </html>

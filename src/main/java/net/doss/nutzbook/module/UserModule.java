@@ -21,10 +21,12 @@ import java.util.Date;
 @Ok("json:{locked:'password|salt',ignoreNull:true}")    //   密码和salt也不可以发送到浏览器去.
 @Fail("http:500")
 @Filters(@By(type=CheckSession.class, args={"me", "/"}))
-public class UserModule {
+public class UserModule extends BaseModule {
 
-    @Inject
-    protected Dao dao; // 就这么注入了,有@IocBean它才会生效
+//    继承BaseModule,并删除dao属性(非常非常重要).
+//    子类与超类的同名属性,会被屏蔽, 导致父类的同名属性没有赋值,调用时出现NPE
+//    @Inject
+//    protected Dao dao; // 就这么注入了,有@IocBean它才会生效
 
     @At
     public int count() {    // 统计用户数的方法,算是个测试点
@@ -62,6 +64,12 @@ public class UserModule {
 
     }
 
+    @At
+    @Ok("jsp:jsp.user.userUpdate")
+    public void userUpdate() {
+
+    }
+
 
 
     @At
@@ -84,12 +92,14 @@ public class UserModule {
         if (msg != null){
             return re.setv("ok", false).setv("msg", msg);
         }
-        user.setName(null);// 不允许更新用户名
+//        user.setName(null);// 不允许更新用户名
         user.setCreateTime(null);//也不允许更新创建时间
         user.setUpdateTime(new Date());// 设置正确的更新时间
         dao.updateIgnoreNull(user);// 真正更新的其实只有password和salt
         return re.setv("ok", true);
     }
+
+
 
     @At
     public Object delete(@Param("id")int id, @Attr("me")int me) {
@@ -108,6 +118,19 @@ public class UserModule {
         pager.setRecordCount(dao.count(User.class, cnd));
         qr.setPager(pager);
         return qr; //默认分页是第1页,每页20条
+    }
+
+    @At
+    public Object queryNew(@Param("..")User user) {
+//        Cnd cnd = Strings.isBlank(user.getName())? null : Cnd.where("name", "like", "%"+user.name+"%");
+//        QueryResult qr = new QueryResult();
+//        qr.setList(dao.query(User.class, cnd, pager));
+//        pager.setRecordCount(dao.count(User.class, cnd));
+//        qr.setPager(pager);
+        Cnd idCnd = Strings.isBlank(user.getId() + "") ? null : Cnd.where("id", "=", user.getId());
+        QueryResult qr = new QueryResult();
+        qr.setList((dao.query(User.class, idCnd)));
+        return qr;
     }
 
     /**
