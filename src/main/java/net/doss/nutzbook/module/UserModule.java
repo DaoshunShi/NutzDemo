@@ -21,10 +21,12 @@ import java.util.Date;
 @Ok("json:{locked:'password|salt',ignoreNull:true}")    //   密码和salt也不可以发送到浏览器去.
 @Fail("http:500")
 @Filters(@By(type=CheckSession.class, args={"me", "/"}))
-public class UserModule {
+public class UserModule extends BaseModule {
 
-    @Inject
-    protected Dao dao; // 就这么注入了,有@IocBean它才会生效
+//    继承BaseModule,并删除dao属性(非常非常重要).
+//    子类与超类的同名属性,会被屏蔽, 导致父类的同名属性没有赋值,调用时出现NPE
+//    @Inject
+//    protected Dao dao; // 就这么注入了,有@IocBean它才会生效
 
     @At
     public int count() {    // 统计用户数的方法,算是个测试点
