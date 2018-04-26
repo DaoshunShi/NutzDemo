@@ -62,6 +62,12 @@ public class UserModule {
 
     }
 
+    @At
+    @Ok("jsp:jsp.user.userUpdate")
+    public void userUpdate() {
+
+    }
+
 
 
     @At
@@ -84,12 +90,14 @@ public class UserModule {
         if (msg != null){
             return re.setv("ok", false).setv("msg", msg);
         }
-        user.setName(null);// 不允许更新用户名
+//        user.setName(null);// 不允许更新用户名
         user.setCreateTime(null);//也不允许更新创建时间
         user.setUpdateTime(new Date());// 设置正确的更新时间
         dao.updateIgnoreNull(user);// 真正更新的其实只有password和salt
         return re.setv("ok", true);
     }
+
+
 
     @At
     public Object delete(@Param("id")int id, @Attr("me")int me) {
@@ -108,6 +116,19 @@ public class UserModule {
         pager.setRecordCount(dao.count(User.class, cnd));
         qr.setPager(pager);
         return qr; //默认分页是第1页,每页20条
+    }
+
+    @At
+    public Object queryNew(@Param("..")User user) {
+//        Cnd cnd = Strings.isBlank(user.getName())? null : Cnd.where("name", "like", "%"+user.name+"%");
+//        QueryResult qr = new QueryResult();
+//        qr.setList(dao.query(User.class, cnd, pager));
+//        pager.setRecordCount(dao.count(User.class, cnd));
+//        qr.setPager(pager);
+        Cnd idCnd = Strings.isBlank(user.getId() + "") ? null : Cnd.where("id", "=", user.getId());
+        QueryResult qr = new QueryResult();
+        qr.setList((dao.query(User.class, idCnd)));
+        return qr;
     }
 
     /**
