@@ -166,6 +166,11 @@
 </head>
 <body>
 <div>
+    <div>
+        <a href="${base}/user/logout">登出</a>
+        <a href="${base}/user/profile/">用户详情</a>
+        <p>---------------------------------------------------------</p>
+    </div>
     <form action="#" id="user_query_form">
         条件<input type="text" id="name" name="name">
         页数<input type="text" id="pageNumber" name="pageNumber" value="1">

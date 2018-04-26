@@ -1,9 +1,6 @@
 package net.doss.nutzbook.bean;
 
-import org.nutz.dao.entity.annotation.Column;
-import org.nutz.dao.entity.annotation.Id;
-import org.nutz.dao.entity.annotation.Name;
-import org.nutz.dao.entity.annotation.Table;
+import org.nutz.dao.entity.annotation.*;
 
 import java.util.Date;
 
@@ -18,6 +15,9 @@ public class User extends BasePojo {
     private String password;
     @Column
     private String salt;
+
+    @One(target=UserProfile.class, field="id", key="userId")
+    protected UserProfile profile;
 
     public int getId() {
         return id;
@@ -49,5 +49,13 @@ public class User extends BasePojo {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public UserProfile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(UserProfile profile) {
+        this.profile = profile;
     }
 }
