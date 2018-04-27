@@ -46,17 +46,53 @@
     </script>
 </head>
 <body>
-<div id="login_div">
-    <form action="#" id="loginForm" method="post">
-        用户名 <input name="username" type="text" value="admin">
-        密码 <input name="password" type="password" value="123456">
-        <button id="login_button">提交</button>
-    </form>
+<%--原版页面--%>
+<%--<div id="login_div">--%>
+    <%--<form action="#" id="loginForm" method="post">--%>
+        <%--用户名 <input name="username" type="text" value="admin">--%>
+        <%--密码 <input name="password" type="password" value="123456">--%>
+        <%--<button id="login_button">提交</button>--%>
+    <%--</form>--%>
+<%--</div>--%>
+<%--<div id="user_info_div">--%>
+    <%--<p id="userInfo"></p>--%>
+    <%--<a href="${base}/user">user List</a><br>--%>
+    <%--<a href="${base}/user/logout">登出</a>--%>
+<%--</div>--%>
+
+<%--BooStrap页面--%>
+<div class="overlay"></div>
+<div class="center-wrapper">
+    <div class="center-content">
+        <div class="row no-m">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <section class="panel bg-white no-b fadeIn animated"> <header class="panel-heading no-b text-center" style="font-size:30px;"> Nutz Web Demo </header> <!-- END Language list    -->
+                    <div class="p15">
+                        <form id="loginForm" action="#" data-parsley-validate="" novalidate="" role="form" method="post">
+                            <div class="form-group">
+                                <input type="text" id="username" name="username" value="admin" required class="form-control input-lg mb25" placeholder="用户名">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password" name="password" value="123456" required class="form-control input-lg mb25" placeholder="密码">
+                            </div>
+                            <p id="tip" class="bg-danger p15" style="display: none"></p>
+
+                            <div class="show">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit" id="login_button" data-loading-text="登录...">登录</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 </div>
-<div id="user_info_div">
-    <p id="userInfo"></p>
-    <a href="${base}/user">user List</a><br>
-    <a href="${base}/user/logout">登出</a>
-</div>
+<link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+<%--<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.3/jquery.min.js"></script>--%>
+<script type="text/javascript" src="https://cdn.staticfile.org/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
+
+<%--写BootStrap表格--%>
+<script type="text/javascript" src="js/table.js"></script>
 </body>
 </html>

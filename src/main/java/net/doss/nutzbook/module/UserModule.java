@@ -73,6 +73,12 @@ public class UserModule extends BaseModule {
 
     }
 
+    @At
+    @Ok("jsp: jsp.user.table")
+    public void userTable() {
+
+    }
+
 
 
     @At
