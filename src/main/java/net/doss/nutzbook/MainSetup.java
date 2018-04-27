@@ -6,6 +6,7 @@ import org.nutz.dao.Dao;
 import org.nutz.dao.util.Daos;
 import org.nutz.integration.quartz.NutQuartzCronJobFactory;
 import org.nutz.ioc.Ioc;
+import org.nutz.lang.Times;
 import org.nutz.mvc.NutConfig;
 import org.nutz.mvc.Setup;
 
@@ -34,16 +35,16 @@ public class MainSetup implements Setup {
         ioc.get(NutQuartzCronJobFactory.class);
 
         // 测试发送邮件
-        try {
-            HtmlEmail email = ioc.get(HtmlEmail.class);
-            email.setSubject("测试NutzBook");
-            email.setMsg("This is a test mail ... :-)" + System.currentTimeMillis());
-            email.addTo("995025784@qq.com");//请务必改成您自己的邮箱啊!!!
-            email.buildMimeMessage();
-            email.sendMimeMessage();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            HtmlEmail email = ioc.get(HtmlEmail.class);
+//            email.setSubject("测试NutzBook");
+//            email.setMsg("This is a test mail ... :-)" + System.currentTimeMillis());
+//            email.addTo("995025784@qq.com");//请务必改成您自己的邮箱啊!!!
+//            email.buildMimeMessage();
+//            email.sendMimeMessage();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void destroy(NutConfig nc) {
