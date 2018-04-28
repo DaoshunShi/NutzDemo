@@ -92,7 +92,7 @@
                                         $("#captcha_img").attr("src", "${base}/captcha/next?_=" + new Date().getTime());
                                     }
                                 </script>
-                                验证码<input name="captcha" type="text" value="">
+                                <input name="captcha" id="captcha" type="text" value="" required class="form-control input-lg mb25" placeholder="验证码"><br>
                                 <img id="captcha_img" onclick="next_captcha();return false;" src="${base}/captcha/next"></img>
                             </div>
                             <p id="tip" class="bg-danger p15" style="display: none"></p>

@@ -56,7 +56,8 @@ function tableInit(searchArgs) {
 
 
         //【样式设置】 
-        height: 300,//table的高度
+        // height: 300,//table的高度
+        height:$(window).height()-200, //  根据父页面调整高度
         //按需求设置不同的样式：5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
         rowStyle: function (row, index) {
             var style = "";

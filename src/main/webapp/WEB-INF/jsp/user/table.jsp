@@ -31,7 +31,7 @@
         <!-- 搜索框 -->
         <div class="col-xs-6 pull-right">
             <div class="input-group">
-                <input type="text" class=" form-control" name="id" placeholder="请输入ID">
+                <%--<input type="text" class=" form-control" name="id" placeholder="请输入ID">--%>
                 <input type="text" class="form-control" name="name" placeholder="请输入姓名">
                 <span class="input-group-btn">
                             <button class="btn btn-default search" type="button">Go!</button>
