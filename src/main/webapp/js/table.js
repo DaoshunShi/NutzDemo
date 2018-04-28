@@ -54,7 +54,6 @@ function tableInit(searchArgs) {
         sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
         showRefresh:true,//刷新按钮
 
-
         //【样式设置】 
         // height: 300,//table的高度
         height:$(window).height()-200, //  根据父页面调整高度

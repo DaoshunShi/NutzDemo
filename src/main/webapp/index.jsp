@@ -7,6 +7,11 @@
     <title>NutzBook demo</title>
     <!-- 导入jquery -->
     <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+
+    <%--引入css--%>
+    <link rel="stylesheet" href="/js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
     <!-- 把user id复制到一个js变量 -->
     <script type="text/javascript">
         var me = '<%=session.getAttribute("me") %>';
