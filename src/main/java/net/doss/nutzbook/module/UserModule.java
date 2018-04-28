@@ -98,6 +98,13 @@ public class UserModule extends BaseModule {
         }
     }
 
+    //shiro
+    @GET
+    @At("/login")
+    @Filters
+    @Ok("jsp:jsp.user.login") // 降内部重定向到登录jsp
+    public void loginPage() {}
+
     @At
     @Ok(">>:/") // 跟其他方法不同,这个方法完成后就跳转首页了
     public void logout(HttpSession session) {
