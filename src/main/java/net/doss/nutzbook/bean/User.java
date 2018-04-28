@@ -3,6 +3,7 @@ package net.doss.nutzbook.bean;
 import org.nutz.dao.entity.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Table("t_user")
 public class User extends BasePojo {
@@ -12,10 +13,16 @@ public class User extends BasePojo {
     @Column
     private String name;
     @Column("passwd")
+    @ColDefine(width=128)
     private String password;
     @Column
     private String salt;
-
+    @Column
+    private boolean locked;
+    @ManyMany(from="u_id", relation="t_user_role", target=Role.class, to="role_id")
+    protected List<Role> roles;
+    @ManyMany(from="u_id", relation="t_user_permission", target=Permission.class, to="permission_id")
+    protected List<Permission> permissions;
     @One(target=UserProfile.class, field="id", key="userId")
     protected UserProfile profile;
 
@@ -49,6 +56,30 @@ public class User extends BasePojo {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
     }
 
     public UserProfile getProfile() {

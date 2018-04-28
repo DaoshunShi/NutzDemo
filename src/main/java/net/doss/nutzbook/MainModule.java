@@ -1,5 +1,6 @@
 package net.doss.nutzbook;
 
+import org.nutz.integration.shiro.ShiroSessionProvider;
 import org.nutz.mvc.annotation.*;
 import org.nutz.mvc.ioc.provider.ComboIocProvider;
 
@@ -17,5 +18,6 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
 @Modules(scanPackage=true)
 @Localization(value="msg/", defaultLocalizationKey="zh-CN")
 @ChainBy(args="mvc/nutzbook-mvc-chain.js")
+@SessionBy(ShiroSessionProvider.class)
 public class MainModule {
 }
