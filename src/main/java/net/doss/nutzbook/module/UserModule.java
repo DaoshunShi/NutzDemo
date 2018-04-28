@@ -2,6 +2,7 @@ package net.doss.nutzbook.module;
 
 import net.doss.nutzbook.bean.User;
 import net.doss.nutzbook.bean.UserProfile;
+import net.doss.nutzbook.util.Toolkit;
 import org.nutz.aop.interceptor.ioc.TransAop;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
@@ -12,6 +13,7 @@ import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.lang.Strings;
 import org.nutz.lang.util.NutMap;
+import org.nutz.mvc.Scope;
 import org.nutz.mvc.annotation.*;
 import org.nutz.mvc.filter.CheckSession;
 
@@ -36,16 +38,36 @@ public class UserModule extends BaseModule {
         return dao.count(User.class);
     }
 
-
+//    原版登陆
+//    @At
+//    @Filters()  // 覆盖UserModule类的@Filter设置,因为登陆可不能要求是个已经登陆的Session
+//    public Object login(@Param("username")String name, @Param("password")String password, HttpSession session) {
+//        User user = dao.fetch(User.class, Cnd.where("name", "=", name).and("password", "=", password));
+//        if (user == null) {
+//            return false;
+//        } else {
+//            session.setAttribute("me", user.getId());
+//            return true;
+//        }
+//    }
+    //带有登陆验证码的登陆
     @At
-    @Filters()  // 覆盖UserModule类的@Filter设置,因为登陆可不能要求是个已经登陆的Session
-    public Object login(@Param("username")String name, @Param("password")String password, HttpSession session) {
+    @Filters // 覆盖UserModule类的@Filter设置,因为登陆可不能要求是个已经登陆的Session
+    public Object login(@Param("username")String name,
+                        @Param("password")String password,
+                        @Param("captcha")String captcha,
+                        @Attr(scope= Scope.SESSION, value="nutz_captcha")String _captcha,
+                        HttpSession session) {
+        NutMap re = new NutMap();
+        if (!Toolkit.checkCaptcha(_captcha, captcha)) {
+            return re.setv("ok", false).setv("msg", "验证码错误");
+        }
         User user = dao.fetch(User.class, Cnd.where("name", "=", name).and("password", "=", password));
         if (user == null) {
-            return false;
+            return re.setv("ok", false).setv("msg", "用户名或密码错误");
         } else {
             session.setAttribute("me", user.getId());
-            return true;
+            return re.setv("ok", true);
         }
     }
 

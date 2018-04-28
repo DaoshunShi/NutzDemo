@@ -21,14 +21,24 @@
                         alert("Connection error");
                     },
                     dataType:"json",
+                    //原版
+                    // success: function(data) {
+                    //     alert(data);
+                    //     if (data == true) {
+                    //         alert("登陆成功");
+                    //         // location.reload();   //  原版
+                    //         window.location = base + "/user/"; //  修改
+                    //     } else {
+                    //         alert("登陆失败,请检查账号密码")
+                    //     }
+                    // }
+                    //登陆验证码修改版
                     success: function(data) {
-                        alert(data);
-                        if (data == true) {
+                        if (data && data.ok) {
                             alert("登陆成功");
-                            // location.reload();   //  原版
-                            window.location = base + "/user/"; //  修改
+                            window.location = base + "/user/";
                         } else {
-                            alert("登陆失败,请检查账号密码")
+                            alert(data.msg);
                         }
                     }
                 });
@@ -74,6 +84,16 @@
                             </div>
                             <div class="form-group">
                                 <input type="password" id="password" name="password" value="123456" required class="form-control input-lg mb25" placeholder="密码">
+                            </div>
+                            <%--登陆验证码--%>
+                            <div class="form-group">
+                                <script type="text/javascript">
+                                    function next_captcha() {
+                                        $("#captcha_img").attr("src", "${base}/captcha/next?_=" + new Date().getTime());
+                                    }
+                                </script>
+                                验证码<input name="captcha" type="text" value="">
+                                <img id="captcha_img" onclick="next_captcha();return false;" src="${base}/captcha/next"></img>
                             </div>
                             <p id="tip" class="bg-danger p15" style="display: none"></p>
 

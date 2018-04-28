@@ -158,7 +158,12 @@
       <artifactId>nutz-integration-shiro</artifactId>
       <version>1.r.65</version>
     </dependency>
-
+    <!--登陆验证码-->
+    <dependency>
+      <groupId>cn.apiclub.tool</groupId>
+      <artifactId>simplecaptcha</artifactId>
+      <version>1.2.2</version>
+    </dependency>
 
 
 

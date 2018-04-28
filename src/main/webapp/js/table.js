@@ -55,7 +55,7 @@ function tableInit(searchArgs) {
         showRefresh:true,//刷新按钮
 
 
-        //【样式设置】
+        //【样式设置】 
         height: 300,//table的高度
         //按需求设置不同的样式：5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
         rowStyle: function (row, index) {
