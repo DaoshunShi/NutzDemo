@@ -8,6 +8,7 @@ import net.sf.ehcache.CacheManager;
 import org.apache.commons.mail.HtmlEmail;
 import org.nutz.dao.Dao;
 import org.nutz.dao.util.Daos;
+import org.nutz.integration.jedis.JedisAgent;
 import org.nutz.integration.quartz.NutQuartzCronJobFactory;
 import org.nutz.ioc.Ioc;
 import org.nutz.lang.Times;
@@ -15,6 +16,7 @@ import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.mvc.NutConfig;
 import org.nutz.mvc.Setup;
+import redis.clients.jedis.Jedis;
 
 import java.util.Date;
 
@@ -81,6 +83,14 @@ public class MainSetup implements Setup {
 
         CacheManager cacheManager = ioc.get(CacheManager.class);
         log.debug("Ehcache CacheManager = " + cacheManager);
+
+        JedisAgent jedisAgent = ioc.get(JedisAgent.class);
+        try (Jedis jedis = jedisAgent.getResource()) { // Java7的语法
+            String re = jedis.set("_nutzbook_test_key", "http://nutzbook.wendal.net");
+            log.debug("redis say : " + re);
+            re = jedis.get("_nutzbook_test_key");
+            log.debug("redis say : " + re);
+        } finally {}
     }
 
     public void destroy(NutConfig nc) {

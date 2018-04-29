@@ -14,6 +14,7 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
         "*js", "ioc/",
         "*anno", "net.doss.nutzbook",
         "*tx",
+        "*jedis",
         "*quartz"})
 @Modules(scanPackage=true)
 @Localization(value="msg/", defaultLocalizationKey="zh-CN")
