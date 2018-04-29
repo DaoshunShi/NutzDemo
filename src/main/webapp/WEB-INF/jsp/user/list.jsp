@@ -171,6 +171,7 @@
         <a href="${base}/user/logout">登出</a>
         <a href="${base}/user/profile/">用户详情</a>
         <a href="${base}/page/simple_role.jsp">权限管理的页面及入口方法</a>
+        <a href="${base}/jetx/hello">集成jetbrick-template-2x</a>
         <p>---------------------------------------------------------</p>
     </div>
     <form action="#" id="user_query_form">

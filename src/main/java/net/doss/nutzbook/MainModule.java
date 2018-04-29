@@ -1,5 +1,6 @@
 package net.doss.nutzbook;
 
+import jetbrick.template.web.nutz.JetTemplateViewMaker;
 import org.nutz.integration.shiro.ShiroSessionProvider;
 import org.nutz.mvc.annotation.*;
 import org.nutz.mvc.ioc.provider.ComboIocProvider;
@@ -20,5 +21,6 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
 @Localization(value="msg/", defaultLocalizationKey="zh-CN")
 @ChainBy(args="mvc/nutzbook-mvc-chain.js")
 @SessionBy(ShiroSessionProvider.class)
+@Views({JetTemplateViewMaker.class})
 public class MainModule {
 }
