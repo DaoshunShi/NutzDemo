@@ -1,6 +1,7 @@
 package net.doss.nutzbook;
 
 import net.doss.nutzbook.bean.User;
+import net.doss.nutzbook.bean.UserProfile;
 import net.doss.nutzbook.service.AuthorityService;
 import net.doss.nutzbook.service.UserService;
 import org.apache.commons.mail.HtmlEmail;
@@ -43,6 +44,16 @@ public class MainSetup implements Setup {
             us.add("admin", "123456");
         }
 
+        // 初始化游客用户
+        User guest = dao.fetch(User.class, "guest");
+        if (guest == null) {
+            UserService us = ioc.get(UserService.class);
+            guest = us.add("guest", "123456");
+            UserProfile profile = dao.fetch(UserProfile.class, guest.getId());
+            profile.setNickname("游客");
+            dao.update(profile, "nickname");
+        }
+
         // 获取NutQuartzCronJobFactory从而触发计划任务的初始化与启动
         ioc.get(NutQuartzCronJobFactory.class);
 
@@ -58,8 +69,9 @@ public class MainSetup implements Setup {
 //            e.printStackTrace();
 //        }
 
+        // 权限系统初始化
         AuthorityService as = ioc.get(AuthorityService.class);
-        as.initFormPackage("net.wendal.nutzbook");
+        as.initFormPackage("net.doss.nutzbook");
         as.checkBasicRoles(dao.fetch(User.class, "admin"));
     }
 

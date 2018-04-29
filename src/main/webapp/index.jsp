@@ -6,7 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>NutzBook demo</title>
     <!-- 导入jquery -->
-    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+    <%--<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>--%>
+    <script type="text/javascript" src="/rs/js/jquery-3.3.1.min.js"></script>
     <!-- 把user id复制到一个js变量 -->
     <script type="text/javascript">
         var me = '<%=session.getAttribute("me") %>';

@@ -13,8 +13,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>用户详情页</title>
-    <script type="text/javascript"
-            src="http://cdn.staticfile.org/jquery/1.8.3/jquery.min.js"></script>
+    <%--<script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.8.3/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="/rs/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
         var base = '${base}';
         $.fn.serializeObject = function() {
