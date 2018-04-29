@@ -5,6 +5,7 @@ import net.doss.nutzbook.bean.UserProfile;
 import net.doss.nutzbook.service.UserService;
 import net.doss.nutzbook.util.Toolkit;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresUser;
 import org.nutz.aop.interceptor.ioc.TransAop;
 import org.nutz.dao.Cnd;
@@ -149,7 +150,8 @@ public class UserModule extends BaseModule {
 
 //    为shiro做准备
     @At
-    @RequiresUser
+//    @RequiresUser
+    @RequiresPermissions("user:add")
     public Object add(@Param("..")User user) { // 两个点号是按对象属性一一设置
         NutMap re = new NutMap();
         String msg = checkUser(user, true);
@@ -177,7 +179,8 @@ public class UserModule extends BaseModule {
 
 //    为shiro做准备
     @At
-    @RequiresUser
+//    @RequiresUser
+    @RequiresPermissions("user:update")
     public Object update(@Param("password")String password, @Attr("me")int me) {
         if (Strings.isBlank(password) || password.length() < 6)
             return new NutMap().setv("ok", false).setv("msg", "密码不符合要求");
@@ -197,7 +200,8 @@ public class UserModule extends BaseModule {
 
     //删除User的时候也删除UserProfile.
     @At
-    @RequiresUser
+//    @RequiresUser
+    @RequiresPermissions("user:delete")
     @Aop(TransAop.READ_COMMITTED)
     public Object delete(@Param("id")int id, @Attr("me")int me) {
         if (me == id) {
@@ -209,7 +213,8 @@ public class UserModule extends BaseModule {
     }
 
     @At
-    @RequiresUser
+//    @RequiresUser
+    @RequiresPermissions("user:query")
     public Object query(@Param("name")String name, @Param("..")Pager pager) {
         Cnd cnd = Strings.isBlank(name)? null : Cnd.where("name", "like", "%"+name+"%");
         QueryResult qr = new QueryResult();
@@ -220,7 +225,8 @@ public class UserModule extends BaseModule {
     }
 
     @At
-    @RequiresUser
+//    @RequiresUser
+    @RequiresPermissions("user:queryNew")
     public Object queryNew(@Param("..")User user) {
 //        Cnd cnd = Strings.isBlank(user.getName())? null : Cnd.where("name", "like", "%"+user.name+"%");
 //        QueryResult qr = new QueryResult();

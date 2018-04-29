@@ -166,6 +166,56 @@
       <version>1.2.2</version>
     </dependency>
 
+
+      <dependency>
+          <groupId>org.nutz</groupId>
+          <artifactId>nutz-plugins-mock</artifactId>
+          <version>1.r.65</version>
+          <scope>test</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.nutz</groupId>
+          <artifactId>nutz-plugins-slog</artifactId>
+          <version>1.r.65</version>
+      </dependency>
+      <dependency>
+          <groupId>org.nutz</groupId>
+          <artifactId>nutz-plugins-hotplug</artifactId>
+          <version>1.r.65</version>
+      </dependency>
+      <dependency>
+          <groupId>org.nutz</groupId>
+          <artifactId>nutz-plugins-views</artifactId>
+          <version>1.r.65</version>
+      </dependency>
+      <dependency>
+          <groupId>org.nutz</groupId>
+          <artifactId>nutz-plugins-apidoc</artifactId>
+          <version>1.r.65</version>
+      </dependency>
+    <dependency>
+      <groupId>org.nutz</groupId>
+      <artifactId>nutz-plugins-validation</artifactId>
+      <version>1.r.65</version>
+    </dependency>
+    <dependency>
+      <groupId>org.nutz</groupId>
+      <artifactId>nutz-plugins-websocket</artifactId>
+      <version>1.r.65</version>
+    </dependency>
+    <dependency>
+      <groupId>org.nutz</groupId>
+      <artifactId>nutz-plugins-cache</artifactId>
+      <version>1.r.65</version>
+    </dependency>
+    <dependency>
+      <groupId>org.nutz</groupId>
+      <artifactId>nutzwx</artifactId>
+      <version>1.r.65</version>
+      <type>jar</type>
+    </dependency>
+
   </dependencies>
 
   <build>

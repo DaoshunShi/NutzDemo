@@ -76,5 +76,15 @@
     <orderEntry type="library" name="Maven: org.nutz:nutz-integration-quartz:1.r.65" level="project" />
     <orderEntry type="library" name="Maven: org.nutz:nutz-integration-shiro:1.r.65" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.nutz:nutz-plugins-mock:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-slog:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-hotplug:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-views:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-apidoc:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-validation:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-websocket:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-cache:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-integration-jedis:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutzwx:1.r.65" level="project" />
   </component>
 </module>

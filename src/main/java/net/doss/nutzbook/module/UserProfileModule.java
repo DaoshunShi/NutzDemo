@@ -19,6 +19,7 @@ import org.nutz.dao.util.Daos;
 import org.nutz.img.Images;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.lang.Strings;
+import org.nutz.lang.random.R;
 import org.nutz.lang.util.NutMap;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
@@ -40,6 +41,8 @@ import javax.servlet.http.HttpSession;
 public class UserProfileModule extends BaseModule {
 
     private static final Log log = Logs.get();
+
+    protected byte[] emailKEY = R.sg(24).next().getBytes();
 
     @At
     public UserProfile get(@Attr(scope= Scope.SESSION, value="me")int userId) {

@@ -1,6 +1,7 @@
 package net.doss.nutzbook;
 
 import net.doss.nutzbook.bean.User;
+import net.doss.nutzbook.service.AuthorityService;
 import net.doss.nutzbook.service.UserService;
 import org.apache.commons.mail.HtmlEmail;
 import org.nutz.dao.Dao;
@@ -56,6 +57,10 @@ public class MainSetup implements Setup {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
+
+        AuthorityService as = ioc.get(AuthorityService.class);
+        as.initFormPackage("net.wendal.nutzbook");
+        as.checkBasicRoles(dao.fetch(User.class, "admin"));
     }
 
     public void destroy(NutConfig nc) {
