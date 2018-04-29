@@ -4,18 +4,23 @@ import net.doss.nutzbook.bean.User;
 import net.doss.nutzbook.bean.UserProfile;
 import net.doss.nutzbook.service.AuthorityService;
 import net.doss.nutzbook.service.UserService;
+import net.sf.ehcache.CacheManager;
 import org.apache.commons.mail.HtmlEmail;
 import org.nutz.dao.Dao;
 import org.nutz.dao.util.Daos;
 import org.nutz.integration.quartz.NutQuartzCronJobFactory;
 import org.nutz.ioc.Ioc;
 import org.nutz.lang.Times;
+import org.nutz.log.Log;
+import org.nutz.log.Logs;
 import org.nutz.mvc.NutConfig;
 import org.nutz.mvc.Setup;
 
 import java.util.Date;
 
 public class MainSetup implements Setup {
+
+    private static final Log log = Logs.get();
 
     // 特别留意一下,是init方法,不是destroy方法!!!!!
     public void init(NutConfig nc) {
@@ -73,6 +78,9 @@ public class MainSetup implements Setup {
         AuthorityService as = ioc.get(AuthorityService.class);
         as.initFormPackage("net.doss.nutzbook");
         as.checkBasicRoles(dao.fetch(User.class, "admin"));
+
+        CacheManager cacheManager = ioc.get(CacheManager.class);
+        log.debug("Ehcache CacheManager = " + cacheManager);
     }
 
     public void destroy(NutConfig nc) {

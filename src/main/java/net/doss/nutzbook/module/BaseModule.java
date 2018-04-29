@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.doss.nutzbook.service.EmailService;
 
+import net.sf.ehcache.CacheManager;
 import org.nutz.dao.Condition;
 import org.nutz.dao.Dao;
 import org.nutz.dao.QueryResult;
@@ -17,6 +18,9 @@ public class BaseModule {
     @Inject protected Dao dao;
 
     @Inject protected EmailService emailService;
+
+    @Inject
+    protected CacheManager cacheManager;
 
     protected QueryResult query(Class<?> klass, Condition cnd, Pager pager, String regex) {
         if (pager != null && pager.getPageNumber() < 1) {

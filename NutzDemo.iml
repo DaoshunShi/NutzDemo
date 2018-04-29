@@ -86,5 +86,7 @@
     <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-cache:1.r.65" level="project" />
     <orderEntry type="library" name="Maven: org.nutz:nutz-integration-jedis:1.r.65" level="project" />
     <orderEntry type="library" name="Maven: org.nutz:nutzwx:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz-plugins-daocache:1.r.65" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.10.1" level="project" />
   </component>
 </module>

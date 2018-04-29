@@ -5,8 +5,10 @@ import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Table;
 import org.nutz.json.JsonField;
 
+import java.io.Serializable;
+
 @Table("t_user_profile")
-public class UserProfile extends BasePojo{
+public class UserProfile extends BasePojo implements Serializable {
 
     /**关联的用户id*/
     @Id(auto=false)
