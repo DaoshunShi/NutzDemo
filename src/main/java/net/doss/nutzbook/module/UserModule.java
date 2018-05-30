@@ -101,6 +101,12 @@ public class UserModule extends BaseModule {
 
     }
 
+    @At
+    @Ok("jsp:jsp.aceAdmin.main")
+    public void aceAdminMain() {
+
+    }
+
 
 
     @At
