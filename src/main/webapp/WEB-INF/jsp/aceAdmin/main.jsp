@@ -477,11 +477,11 @@
                 // html+='<li><a href="#">'+a[i].resourceName+'</a>';
 
                 if (i==0 && a[0].parentMenuId==1) {
-                    html+='<li class=\"active\"><a href="#" class="dropdown-toggle">'+a[i].resourceName+'</a>';
+                    html+='<li class=\"active\"><a href="#" class="dropdown-toggle"><i class=\"icon-dashboard\"></i>'+a[i].resourceName+'\n <b class=\"arrow icon-angle-down\"></b></a>';
                 } else if (a[i].linkPath == "") {
-                    html+='<li><a href="#" class=\"dropdown-toggle\">'+a[i].resourceName+'</a>';
+                    html+='<li><a href="#" class=\"dropdown-toggle\"><i class=\"icon-double-angle-right\"></i>'+a[i].resourceName+'<b class=\"arrow icon-angle-down\"></b></a>';
                 } else {
-                    html+='<li><a href="#">'+a[i].resourceName+'</a>';
+                    html+='<li><a href="#"><i class=\"'+a[i].cls+'\"></i>'+a[i].resourceName+'</a>';
                 }
 
                 html+=this.getDom(this.groups[a[i].id]);
