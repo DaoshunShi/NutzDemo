@@ -18,7 +18,9 @@ import org.nutz.mvc.annotation.*;
 import org.nutz.mvc.filter.CheckSession;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @IocBean // 还记得@IocBy吗? 这个跟@IocBy有很大的关系哦
 @At("/user")
@@ -101,11 +103,11 @@ public class UserModule extends BaseModule {
 
     }
 
-    @At
-    @Ok("jsp:jsp.aceAdmin.main")
-    public void aceAdminMain() {
-
-    }
+//    @At
+//    @Ok("jsp:jsp.aceAdmin.main")
+//    public void aceAdminMain() {
+//
+//    }
 
 
 
@@ -164,8 +166,40 @@ public class UserModule extends BaseModule {
         Cnd cnd = Strings.isBlank(name)? null : Cnd.where("name", "like", "%"+name+"%");
         QueryResult qr = new QueryResult();
         qr.setList(dao.query(User.class, cnd, pager));
+        String str = dao.query(User.class, cnd, pager).toString();
         pager.setRecordCount(dao.count(User.class, cnd));
         qr.setPager(pager);
+        return qr; //默认分页是第1页,每页20条
+    }
+
+    @At
+    public Object querySidebar(@Param("name") String name, @Param("..")Pager pager) {
+        QueryResult qr = new QueryResult();
+        List<Menu> list = new ArrayList<>();
+
+        Menu menu = new Menu("11","11","系统管理","","1","","");
+        list.add(menu);
+        menu = new Menu("111","111","用户管理","","11","","");
+        list.add(menu);
+        menu = new Menu("1111","1111","部门管理","console/organ/orgIndex.jsp","111","console/organ/orgIndex.jsp","");
+        list.add(menu);
+        menu = new Menu("1112","1112","账号管理","console/user/userIndex.jsp","111","console/user/userIndex.jsp","");
+        list.add(menu);
+        menu = new Menu("1113","1113","角色管理","console/group/groupList.jsp","111","console/group/groupList.jsp","");
+        list.add(menu);
+        menu = new Menu("112","112","权限管理","","11","","");
+        list.add(menu);
+        menu = new Menu("1121","1121","菜单管理","console/menu/menuIndex.jsp","112","console/menu/menuIndex.jsp","");
+        list.add(menu);
+        menu = new Menu("1122","1122","权限管理","console/authorization/privilegeIndex.jsp","112","console/authorization/privilegeIndex.jsp","");
+        list.add(menu);
+        menu = new Menu("113","113","基础配置","","11","","");
+        list.add(menu);
+        menu = new Menu("1131","1131","字典管理","console/dict/dictList.jsp","113","console/dict/dictList.jsp","");
+        list.add(menu);
+        menu = new Menu("1132","1132","系统参数配置","console/param/paramIndex.jsp","113","console/param/paramIndex.jsp","");
+        list.add(menu);
+        qr.setList(list);
         return qr; //默认分页是第1页,每页20条
     }
 

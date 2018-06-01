@@ -1,0 +1,13 @@
+﻿[
+{"id":"11","code":"11","resourceName":"系统管理","displayOrder":"","parentMenuId":"1","linkPath":"","cls":""},
+{"id":"111","code":"111","resourceName":"用户管理","displayOrder":"","parentMenuId":"11","linkPath":"","cls":""},
+{"id":"1111","code":"1111","resourceName":"部门管理","displayOrder":"console/organ/orgIndex.jsp","parentMenuId":"111","linkPath":"console/organ/orgIndex.jsp","cls":""},
+{"id":"1112","code":"1112","resourceName":"账号管理","displayOrder":"console/user/userIndex.jsp","parentMenuId":"111","linkPath":"console/user/userIndex.jsp","cls":""},
+{"id":"1113","code":"1113","resourceName":"角色管理","displayOrder":"console/group/groupList.jsp","parentMenuId":"111","linkPath":"console/group/groupList.jsp","cls":""},
+{"id":"112","code":"112","resourceName":"权限管理","displayOrder":"","parentMenuId":"11","linkPath":"","cls":""},
+{"id":"1121","code":"1121","resourceName":"菜单管理","displayOrder":"console/menu/menuIndex.jsp","parentMenuId":"112","linkPath":"console/menu/menuIndex.jsp","cls":""},
+{"id":"1122","code":"1122","resourceName":"权限管理","displayOrder":"console/authorization/privilegeIndex.jsp","parentMenuId":"112","linkPath":"console/authorization/privilegeIndex.jsp","cls":""},
+{"id":"113","code":"113","resourceName":"基础配置","displayOrder":"","parentMenuId":"11","linkPath":"","cls":""},
+{"id":"1131","code":"1131","resourceName":"字典管理","displayOrder":"console/dict/dictList.jsp","parentMenuId":"113","linkPath":"console/dict/dictList.jsp","cls":""},
+{"id":"1132","code":"1132","resourceName":"系统参数配置","displayOrder":"console/param/paramIndex.jsp","parentMenuId":"113","linkPath":"console/param/paramIndex.jsp","cls":""}
+]

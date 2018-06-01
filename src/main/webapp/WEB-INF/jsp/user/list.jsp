@@ -170,7 +170,7 @@
         <a href="${base}/user/logout">登出</a>
         <a href="${base}/user/profile/">用户详情</a>
         <a href="${base}/user/userTable">BootStrap Table</a>
-        <a href="${base}/user/aceAdminMain">AceAdmin Main</a>
+        <a href="${base}/sidebar/aceAdminMain">AceAdmin Main</a>
         <p>---------------------------------------------------------</p>
     </div>
     <form action="#" id="user_query_form">
